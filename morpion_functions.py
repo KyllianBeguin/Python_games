@@ -4,15 +4,13 @@ Auteur : Kyllian BEGUIN
 Bibliothèque des fonctions utilisées par morpion_main.py
 """
 
-
 # ZONE D'IMPORT
 from random import randint
 
-
 # ZONE D'INITIALISATION DES VARIABLES
 board_size = 3
-len_max_nb = len(list(str(board_size*board_size)))
-moves_designs = ["X"*len_max_nb, "O"*len_max_nb]
+len_max_nb = len(list(str(board_size * board_size)))
+moves_designs = ["X" * len_max_nb, "O" * len_max_nb]
 player = False
 players = ["Computer", "You"]
 victory = False
@@ -52,7 +50,8 @@ def check_move(movement, board):
     # On créer un merge des sous listes de la matrice.
     # On ajoute à la liste l'item de la sous liste du board pour chaque item de sous liste.
 
-    if (movement > board_surface or movement < 0) or board[(movement-1)//len(board)][(movement%len(board))-1] in moves_designs:
+    if (movement > board_surface or movement < 0) or board[(movement - 1) // len(board)][
+        (movement % len(board)) - 1] in moves_designs:
         raise NotAllowedMovement
 
     return movement
@@ -76,7 +75,7 @@ def checker(board, movement_str):
             if player:
                 movement_str = input("Give a movement: ")
             elif not player:
-                movement_str = randint(1,board_size*board_size)
+                movement_str = randint(1, board_size * board_size)
         except ValueError:
             print("Ce n'est pas une valeur valide !")
     return
@@ -85,10 +84,11 @@ def checker(board, movement_str):
 def play_movement(movement, board):
     global player
 
-    if int(board[(movement-1)//len(board)][(movement%len(board))-1]) == movement:
-        board[(movement-1)//len(board)][(movement%len(board))-1] = moves_designs[player]
+    if int(board[(movement - 1) // len(board)][(movement % len(board)) - 1]) == movement:
+        board[(movement - 1) // len(board)][(movement % len(board)) - 1] = moves_designs[player]
 
     return board
+
 
 def victory_check(board):
     global victory
@@ -101,7 +101,8 @@ def victory_check(board):
         if board[row] == list_check or [board[j][row] for j in range(board_size)] == list_check:
             print(players[player], "WIN !!", "\n\n")
             victory = True
-    if [board[0 + j][0 + j] for j in range(board_size)] == list_check or [board[-1 - j][0 + j] for j in range(board_size)] == list_check:
+    if [board[0 + j][0 + j] for j in range(board_size)] == list_check or [board[-1 - j][0 + j] for j in
+                                                                          range(board_size)] == list_check:
         print(players[player], "WIN !!", "\n\n")
         victory = True
     player = not player
