@@ -11,25 +11,21 @@ from random import randint
 board_size, board_surface = var_init()
 victory = False
 player = False
+round_nb = 1
 
 # ZONE DE CALCUL DES VARIABLES
 board = [[str(u + i + 1).zfill(len(list(str(board_surface)))) for i in range(board_size)] for u in
          range(0, board_surface, board_size)]
 board_list = [item for sublist in board for item in sublist]
 
-
-
-
-
-
 # SCRIPT PRINCIPAL
 if __name__ == '__main__':
-    while not victory:
+    while (victory == False) and (round_nb < board_surface):
         display_board(board)
         print("\n\n", "#" * 50, "\n\n", sep='')
 
         if not player:
-            movement = randint(1,9)
+            movement = randint(1, 9)
             movement = checker(board, movement)
         elif player:
             movement_str = input("Give a movement: ")
@@ -39,7 +35,8 @@ if __name__ == '__main__':
         victory = victory_check(board)
 
         player = not player
+        round_nb += 1
 
-
-
+    if round_nb == board_surface:
+        print("It's a draw !!\n\n")
     display_board(board)
