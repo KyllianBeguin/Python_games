@@ -50,4 +50,17 @@ Ensuite, je fais une liste dans laquelle je demande, pour chaque valeur de 1 à 
   
 Cela semble très simple à première vu, mais je tenais à le mettre en lumière pour montrer la puissance de la compréhension de liste qui ici m'a évité de devoir faire une deuxième boucle et calculer les positions.  
   
-## 3. Construction du board aka "la quitescence de la compréhension de liste"
+## 3. Construction du board aka "la quitescence de la compréhension de liste"  
+Pour celles et ceux qui ne savent pas, j'aime bien le concept de "**compréhension de liste**".  
+Si ce concept vous est inconnu, je vous invite à aller [ici](https://en.wikipedia.org/wiki/List_comprehension)  
+  
+Dans ce jeu, j'utilise la compréhension de liste pour construire mon plateau, quelque soit la taille de ce dernier.  
+Attention les yeux, voici la bête :  
+board = [[str(u + i + 1).zfill(len(list(str(board_surface)))) for i in range(board_size)] for u in range(0, board_surface, board_size)]
+  
+### 3.1. Qu'y a-t-il dans cette liste ?  
+Tout d'abord, on commence par initier autant de listes que j'ai de taille de plateau.  
+Cela fait référence à cette partie : for u in range(0, board_surface, board_size)  
+Je loop dans une liste avec les valeurs allant de 0 à la surface (size * size) avec un saut de size.  
+  
+### 3.2. Exemple avec un plateau de taille board_size = 3
