@@ -61,6 +61,9 @@ board = [[str(u + i + 1).zfill(len(list(str(board_surface)))) for i in range(boa
 ### 3.1. Qu'y a-t-il dans cette liste ?  
 Tout d'abord, on commence par initier autant de listes que j'ai de taille de plateau.  
 Cela fait référence à cette partie : for u in range(0, board_surface, board_size)  
-Je loop dans une liste avec les valeurs allant de 0 à la surface (size * size) avec un saut de size.  
+Je loop dans une liste avec les valeurs allant de 0 à la surface (= size * size) avec un saut de size.  
   
-### 3.2. Exemple avec un plateau de taille board_size = 3
+### 3.2. Exemple avec un plateau de taille board_size = 3  
+board_surface = 3 * 3 = 9
+board = [[str(u + i + 1).zfill(len(list(str(9)))) for i in range(3)] for u in range(0, 9, 3)]  
+On va caster la somme de la valeur "u" (= 0, 3, 6) avec i (= 0, 1, 2) et avec 1. Ce qui fait : 1, 2, 3 pour u = 0, donc la première ligne, etc...
